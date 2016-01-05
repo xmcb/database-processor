@@ -2,11 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	<groupId>com.foo.xuanyuan</groupId>
-    <artifactId>dbprocessor</artifactId>
-    <name>dbprocessor</name>
-	<version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<parent>
+	    <groupId>com.foo.xuanyuan</groupId>
+	    <artifactId>dbprocessor</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>dbprocessor-spi</artifactId>
+    <name>dbprocessor-spi</name>
+    <packaging>jar</packaging>
     <properties>
 	    <java.version>1.7</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,11 +29,8 @@
 			<url>http://192.168.143.101:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-     <modules>
-	    <module>dbprocessor-spi</module>
-        <module>dbprocessor-core</module>
-		<module>dbprocessor-web</module>
-    </modules>
+	<dependencies>
+    </dependencies>
     <build>
     	<pluginManagement>
     		<plugins>
@@ -52,4 +52,5 @@
 			</plugin>
     	</plugins>
     </build>
+    
 </project>

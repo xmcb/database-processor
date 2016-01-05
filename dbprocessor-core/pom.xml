@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-	    <groupId>com.juanpi.xuanyuan</groupId>
+	    <groupId>com.foo.xuanyuan</groupId>
 	    <artifactId>dbprocessor</artifactId>
-	    <version>2.0.0-SNAPSHOT</version>
+	    <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>dbprocessor-core</artifactId>
     <name>dbprocessor-core</name>
@@ -16,15 +16,10 @@
     </properties>
     <dependencies>
        <dependency>
-	      <groupId>com.juanpi.xuanyuan</groupId>
+	      <groupId>com.foo.xuanyuan</groupId>
 	      <artifactId>dbprocessor-spi</artifactId>
-	      <version>2.0.0-SNAPSHOT</version>
+	      <version>1.0.0-SNAPSHOT</version>
        </dependency>
-       <!-- <dependency>
-			<groupId>com.juanpi.sdk</groupId>
-			<artifactId>juanpi-sdk-ec</artifactId>
-			<version>2.0.0</version>
-		</dependency> -->
        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
