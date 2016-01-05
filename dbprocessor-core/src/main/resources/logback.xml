@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/dbprocessor/dbprocessor.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/dbprocessor/dbprocessor.%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+	       		 <maxFileSize>50MB</maxFileSize>  
+	     	</timeBasedFileNamingAndTriggeringPolicy>  
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="metricsLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>/data/logs/dbprocessor/trace/metrics.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+	        <fileNamePattern>/data/logs/dbprocessor/trace/metrics.%i.log</fileNamePattern>
+	        <maxIndex>10</maxIndex>
+	    </rollingPolicy>
+	    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+	        <maxFileSize>10MB</maxFileSize>
+	    </triggeringPolicy>
+	    <encoder>
+	        <pattern>%msg%n</pattern>
+	    </encoder>
+	</appender>
+	<appender name ="dbprocessorAsync" class= "ch.qos.logback.classic.AsyncAppender">
+	    <discardingThreshold >0</discardingThreshold>
+	    <queueSize>256</queueSize>
+	    <appender-ref ref="rollingFile"/>
+	</appender>
+	
+	<appender name ="async" class= "ch.qos.logback.classic.AsyncAppender">
+	    <discardingThreshold >0</discardingThreshold>
+	    <queueSize>256</queueSize>
+	    <appender-ref ref ="metricsLogFile"/>
+	</appender>
+	
+	<logger name="metrics" level="INFO" additivity="false">
+	    <appender-ref ref="async" />
+	</logger>
+	
+    <logger name="com.juanpi.dbprocessor" level="INFO" additivity="false">
+    	<appender-ref ref="dbprocessorAsync"/>
+    </logger>
+    
+    <root level="ERROR">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>
