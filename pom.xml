@@ -26,7 +26,7 @@
 			<url>http://192.168.143.101:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-     <modules>
+    <modules>
 	    <module>dbprocessor-spi</module>
         <module>dbprocessor-core</module>
 		<module>dbprocessor-web</module>
